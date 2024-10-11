@@ -20,7 +20,9 @@
   "providers": [
     "./providers/AppProvider",
     "@adonisjs/core",
-    "@adonisjs/lucid"
+    "@adonisjs/lucid",
+    "@brighthustle/adonis-transmit",
+    "@adonisjs/redis"
   ],
   "aceProviders": [
     "@adonisjs/repl"
