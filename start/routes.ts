@@ -42,3 +42,7 @@ Route.get('/swagger', async () => {
 Route.get('/docs', async () => {
   return AutoSwagger.ui('/swagger', swagger)
 })
+
+Route.group(() => {
+  Route.post('/users/signup', 'UsersController.store')
+}).prefix('v1')
