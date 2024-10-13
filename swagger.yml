@@ -72,6 +72,32 @@ components:
           type: "string"
           example: "/?page=5"
           nullable: false
+    Score:
+      type: "object"
+      required:
+        - "userId"
+      properties:
+        id:
+          type: "string"
+          example: "Lorem Ipsum"
+        user_id:
+          type: "string"
+          example: "Lorem Ipsum"
+        quiz_id:
+          type: "string"
+          example: "Lorem Ipsum"
+        score:
+          type: "number"
+          example: 987
+        created_at:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+        updated_at:
+          type: "string"
+          example: "2021-03-23T16:13:08.489+01:00"
+          format: "date-time"
+      description: "Score (Model)"
     User:
       type: "object"
       required:
@@ -195,6 +221,52 @@ paths:
               $ref: "#/components/schemas/User"
             example:
               name: "John Doe"
+  /v1/quizzes/{id}:
+    get:
+      summary: "Get a single instance of quizzes (show)"
+      description: "Returns **200** (OK) as **text/plain**\n\n _app/Controllers/Http/QuizzesController.ts_ - **show**"
+      operationId: "getQuizById"
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "QUIZZES"
+      responses:
+        200:
+          content:
+            text/plain:
+              example: "quiz data"
+          description: "Returns **200** (OK) as **text/plain**"
+        404:
+          content:
+            text/plain:
+              example: "not found"
+          description: "Returns **404** (Not Found) as **text/plain**"
+      security: []
+  /v1/quizzes/{id}/submitting:
+    post:
+      summary: "route"
+      description: "\n\n __ - ****"
+      parameters:
+        - in: "path"
+          name: "id"
+          schema:
+            type: "string"
+          required: true
+      tags:
+        - "QUIZZES"
+      responses:
+        201:
+          description: "Created"
+          content:
+            application/json: {}
+      security: []
+      requestBody:
+        content:
+          application/json: {}
 tags:
   - name: "EVENTS"
     description: "Everything related to EVENTS"
@@ -204,3 +276,5 @@ tags:
     description: "Everything related to UNSUBSCRIBE"
   - name: "USERS"
     description: "Everything related to USERS"
+  - name: "QUIZZES"
+    description: "Everything related to QUIZZES"

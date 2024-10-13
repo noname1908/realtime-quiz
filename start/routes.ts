@@ -45,4 +45,7 @@ Route.get('/docs', async () => {
 
 Route.group(() => {
   Route.post('/users/signup', 'UsersController.store')
+  Route.get('/quizzes/leaderboard', 'FetchQuizLeaderboardController')
+  Route.get('/quizzes/:id', 'QuizzesController.show')
+  Route.post('/quizzes/:id/submitting', 'SubmitQuizController')
 }).prefix('v1')
